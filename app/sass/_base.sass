@@ -1,0 +1,74 @@
+@import "bourbon"
+@import "vars"
+@import "fonts"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+.gigantic, .huge, .large, .bigger, .big,
+h1, h2, h3, h4, h5, h6
+  color: #222
+  font-weight: bold
+
+h1
+  font-size: 40px
+
+.small, small
+  font-size: 10px
+  line-height: 1.2
+
+
+// Basic Text Style
+
+p
+  margin: 0 0 20px 0
+
+em
+  font-style: italic
+
+strong
+  font-weight: bold
+
+hr
+  border: solid #ddd
+  border-width: 1px 0 0
+  clear: both
+  margin: 10px 0 30px
+  height: 0
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	overflow: hidden
+
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.hidden
+  display: none
