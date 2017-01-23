@@ -7,6 +7,7 @@ var gulp           = require('gulp'),
 		uglify         = require('gulp-uglify'),
 		cleanCSS       = require('gulp-clean-css'),
 		rename         = require('gulp-rename'),
+		spritesmith = require("gulp.spritesmith"),
 		del            = require('del'),
 		imagemin       = require('gulp-imagemin'),
 		cache          = require('gulp-cache'),
@@ -69,6 +70,33 @@ gulp.task('imagemin', function() {
 	.pipe(cache(imagemin()))
 	.pipe(gulp.dest('dist/img'));
 });
+
+// Sprites PNG
+gulp.task('cleansprite', function() {
+    return del.sync('app/img/sprite/sprite.png');
+});
+
+
+gulp.task('spritemade', function() {
+    var spriteData =
+        gulp.src('app/img/sprite/*.*')
+        .pipe(spritesmith({
+            imgName: 'sprite.png',
+            cssName: '_sprite.scss',
+            padding: 15,
+            cssFormat: 'scss',
+            algorithm: 'binary-tree',
+            cssTemplate: 'sass.template.mustache',
+            cssVarMap: function(sprite) {
+                sprite.name = 's-' + sprite.name;
+            }
+        }));
+
+    spriteData.img.pipe(gulp.dest('app/img/sprite/')); // путь, куда сохраняем картинку
+    spriteData.css.pipe(gulp.dest('app/sass/')); // путь, куда сохраняем стили
+});
+gulp.task('sprite', ['cleansprite', 'spritemade']);
+
 
 gulp.task('build', ['removedist', 'jade', 'imagemin', 'sass', 'scripts'], function() {
 
