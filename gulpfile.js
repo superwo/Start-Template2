@@ -10,6 +10,7 @@ var gulp           = require('gulp'),
 		spritesmith = require("gulp.spritesmith"),
 		del            = require('del'),
 		imagemin       = require('gulp-imagemin'),
+		pngquant = require('imagemin-pngquant'),
 		cache          = require('gulp-cache'),
 		autoprefixer   = require('gulp-autoprefixer'),
 		bourbon        = require('node-bourbon'),
@@ -66,8 +67,11 @@ gulp.task('watch', ['sass', 'jade', 'scripts', 'browser-sync'], function() {
 });
 
 gulp.task('imagemin', function() {
-	return gulp.src('app/img/**/*')
-	.pipe(cache(imagemin()))
+	return gulp.src(['app/img/**/*', '!app/img/sprite/*'])
+	.pipe(cache(imagemin({
+		progressive: true,
+		use: [pngquant()]
+	})))
 	.pipe(gulp.dest('dist/img'));
 });
 
