@@ -3,6 +3,7 @@ require('./gulp/tasks/styles');
 require('./gulp/tasks/scripts');
 require('./gulp/tasks/img');
 require('./gulp/tasks/watch');
+require('./gulp/tasks/svg');
 
 var gulp           = require('gulp'),
 		gutil          = require('gulp-util' ),
