@@ -1,13 +1,21 @@
 var gulp           = require('gulp'),
     concat         = require('gulp-concat'),
     uglify         = require('gulp-uglify'),
-    browserSync    = require('browser-sync');
+    browserSync    = require('browser-sync'),
+    webpack        = require('webpack');
 
-// Скрипты проекта
+gulp.task('webpack', function(callback) {
+  webpack(require('../../webpack.config.js'), function(err, stats) {
+    if(err) {
+      console.log(err.toString());
+    }
+    console.log(stats.toString());
+    callback();
+  });
+});
 gulp.task('scripts', function() {
 	return gulp.src([
-		'app/libs/jquery/dist/jquery.min.js',
-		'app/js/common.js', // Всегда в конце
+		'app/js/common.js' // Всегда в конце
 		])
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify())
