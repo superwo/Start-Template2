@@ -1,5 +1,15 @@
 var gulp  = require('gulp'),
-    browserSync    = require('browser-sync');
+    browserSync    = require('browser-sync'),
+    notify         = require("gulp-notify");
+
+gulp.task('browser-sync', function() {
+	browserSync({
+		server: {
+			baseDir: 'app'
+		},
+		notify: false
+	});
+});
 
 gulp.task('watch', ['sass', 'jade', 'scripts', 'modernizr', 'browser-sync'], function() {
 	gulp.watch('app/sass/**/*.sass', ['sass']);
