@@ -15,7 +15,8 @@ gulp.task('webpack', function(callback) {
 });
 gulp.task('scripts', function() {
 	return gulp.src([
-		'app/js/common.js' // Всегда в конце
+    'app/js/Vendor.js',
+		'app/js/App.js' // Всегда в конце
 		])
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify())
