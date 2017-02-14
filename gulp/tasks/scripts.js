@@ -13,7 +13,7 @@ gulp.task('webpack', function(callback) {
     callback();
   });
 });
-gulp.task('scripts', function() {
+gulp.task('scripts', ['modernizr'], function() {
 	return gulp.src([
     'app/js/Vendor.js',
 		'app/js/App.js' // Всегда в конце
