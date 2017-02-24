@@ -26,6 +26,7 @@ body textarea:required:valid
 	color: #666
 
 html
+	height: 100%
 	box-sizing: border-box
 *, *::before, *::after
 	box-sizing: inherit
@@ -62,13 +63,29 @@ hr
   height: 0
 
 body
+	height: 100%
 	font-size: 16px
 	min-width: 320px
 	position: relative
 	line-height: 1.75
 	font-family: $default-font
-	overflow: hidden
+	overflow-x: hidden
 
+// footer to bottom
+.wrapper
+	position: relative
+	min-height: 100%
+	overflow: hidden
+header.mainheader
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+footer.mainfooter
+	position: absolute
+	left: 0
+	bottom: 0
+	width: 100%
 
 .img-responsive
 	display: block

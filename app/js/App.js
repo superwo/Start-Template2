@@ -63,63 +63,11 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _jquery = __webpack_require__(2);
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var TestModule = function () {
-  function TestModule() {
-    _classCallCheck(this, TestModule);
-
-    // cache elements from page
-    this.titles = (0, _jquery2.default)('h1');
-
-    this.events();
-  }
-
-  _createClass(TestModule, [{
-    key: 'events',
-    value: function events() {
-      this.titles.on('click', this.logSomething);
-    }
-
-    // custom functions
-
-  }, {
-    key: 'logSomething',
-    value: function logSomething() {
-      console.log("You clicked me!");
-    }
-  }]);
-
-  return TestModule;
-}();
-
-exports.default = TestModule;
-
-/***/ }),
-/* 2 */
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10346,19 +10294,134 @@ return jQuery;
 
 
 /***/ }),
+/* 1 */,
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var StickFooter = function () {
+  function StickFooter() {
+    _classCallCheck(this, StickFooter);
+
+    // cache elements from page
+    this.wind = (0, _jquery2.default)(window);
+    this.main_content = (0, _jquery2.default)('.maincontent');
+
+    this.events();
+  }
+
+  _createClass(StickFooter, [{
+    key: 'events',
+    value: function events() {
+      this.wind.on('load', this.hf.bind(this));
+      this.wind.on('resize', this.hf.bind(this));
+    }
+
+    // custom functions
+
+  }, {
+    key: 'hf',
+    value: function hf() {
+      var h_header = (0, _jquery2.default)('.mainheader').height();
+      var h_footer = (0, _jquery2.default)('.mainfooter').height();
+      this.main_content.css({
+        'paddingTop': h_header,
+        'paddingBottom': h_footer
+      });
+    }
+  }]);
+
+  return StickFooter;
+}();
+
+exports.default = StickFooter;
+
+/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _TestModule = __webpack_require__(1);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var TestModule = function () {
+  function TestModule() {
+    _classCallCheck(this, TestModule);
+
+    // cache elements from page
+    this.titles = (0, _jquery2.default)('h1');
+
+    this.events();
+  }
+
+  _createClass(TestModule, [{
+    key: 'events',
+    value: function events() {
+      this.titles.on('click', this.logSomething);
+    }
+
+    // custom functions
+
+  }, {
+    key: 'logSomething',
+    value: function logSomething() {
+      console.log("You clicked me!");
+    }
+  }]);
+
+  return TestModule;
+}();
+
+exports.default = TestModule;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _TestModule = __webpack_require__(3);
 
 var _TestModule2 = _interopRequireDefault(_TestModule);
+
+var _StickFooter = __webpack_require__(2);
+
+var _StickFooter2 = _interopRequireDefault(_StickFooter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var testModule = new _TestModule2.default();
+var stickFooter = new _StickFooter2.default();
 
 /***/ })
 /******/ ]);

@@ -176,20 +176,36 @@
 	&::-webkit-scrollbar-track-piece
 		@content
 
+// make arrow
+=arr($width, $height, $bg, $direction)
+	width: 0px
+	height: 0px
+	border-style: solid
+	@if $direction == t
+		border-width: 0 $width / 2 + px $height + px $width / 2 + px
+		border-color: transparent transparent $bg transparent
+	@if $direction == r
+		border-width: $height / 2 + px 0 $height / 2 + px $width + px
+		border-color: transparent transparent transparent $bg
+	@if $direction == b
+		border-width: $height + px $width / 2 + px 0 $width / 2 + px
+		border-color: $bg transparent transparent transparent
+	@if $direction == l
+		border-width: $height / 2 + px $width + px $height / 2 + px 0
+		border-color: transparent $bg transparent transparent
+	@if $direction == tl
+		border-width: $height + px $width + px 0 0
+		border-color: $bg transparent transparent transparent
+	@if $direction == tr
+		border-width: 0 $width + px $height + px 0
+		border-color: transparent $bg transparent transparent
+	@if $direction == br
+		border-width: 0 0 $height + px $width + px
+		border-color: transparent transparent $bg transparent
+	@if $direction == bl
+		border-width: $height + px 0 0 $width + px
+		border-color: transparent transparent transparent $bg
 
-=rotate($var)
-	-ms-transform: rotate($var+deg)
-	-webkit-transform: rotate($var+deg)
-	transform: rotate($var+deg)
-
-=blur($var)
-	-webkit-filter: blur($var)
-	filter: blur($var)
-
-=scale($var)
-	-ms-transform: scale($var)
-	-webkit-transform: scale($var)
-	transform: scale($var)
 
 =counter($var)
 	counter-reset: $var
@@ -207,25 +223,8 @@
 =longshadow($color)
 	text-shadow: makelongshadow($color)
 
-=br($radius)
-	-webkit-border-radius: $radius
-	-moz-border-radius: $radius
-	-ms-border-radius: $radius
-	border-radius: $radius
 
-=bs($bshadow)
-	-webkit-box-shadow: $bshadow
-	-moz-box-shadow: $bshadow
-	-ms-box-shadow: $bshadow
-	-o-box-shadow: $bshadow
-	box-shadow: $bshadow
 
-=ts($string)
-	-webkit-text-shadow: $string
-	-moz-text-shadow: $string
-	-ms-text-shadow: $string
-	-o-text-shadow: $string
-	text-shadow: $string
 
 =links($link, $visit, $hover, $active)
 	a
@@ -237,12 +236,6 @@
 		&:active
 			color: $active
 
-=opacity($trans)
-	-moz-opacity: $trans
-	-khtml-opacity: $trans
-	opacity: $trans
-	filter: alpha(opactiy=($trans * 100))
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})"
 
 //Mixins for creating sprites png
 =spriteWidth($sprite)

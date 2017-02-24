@@ -32,12 +32,11 @@ html(lang='en')
 
   body
     .wrapper
-      .maincontent
-        include ../common/header.jade
-        
+      include ../common/header.jade
+      main.maincontent  
         block content
           .hidden
         
-    include ../common/footer.jade
+      include ../common/footer.jade
   
   script(src='js/scripts.min.js')
